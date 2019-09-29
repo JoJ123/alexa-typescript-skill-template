@@ -8,7 +8,8 @@
     "deploy": "cross-env ENV=prod && npm run build && ask deploy",
     "deploy:dev": "cross-env ENV=dev && npm run build && ask deploy",
     "deploy:lambda": "cross-env ENV=prod && npm run build && ask deploy --target lambda",
-    "deploy:local": "cross-env ENV=local && ask deploy --target skill --profile local"
+    "deploy:local": "cross-env ENV=local && ask deploy --target skill --profile local",
+    "lint": "tslint -c tslint.json 'lambda/**/*.ts'"
   },
   "author": "JoJ123",
   "license": "ISC",
