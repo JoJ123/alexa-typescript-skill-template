@@ -74,20 +74,20 @@ Contains an `http` server using `express`, which you can use with `ngrok` or `se
 2. **Clone** the repository and navigate into the skill's root directory.
 
 	```bash
-	ask new --url https://github.com/Xzya/alexa-typescript-skill-template.git --skill-name hello-world
+	ask new --url https://github.com/JoJ123/alexa-typescript-skill-template.git --skill-name hello-world
 	cd hello-world
 	```
 
 3. Install npm dependencies
 
 	```bash
-	npm install
+	yarn install
 	```
 
 4. To start the skill locally, run the following
 
 	```bash
-	npm start
+	yarn start
 	```
 
 ## Deployment
@@ -99,12 +99,16 @@ Contains an `http` server using `express`, which you can use with `ngrok` or `se
 2. Deploy the skill and the Lambda function in one step by running the following command:
 
 ```bash
-$ ask deploy
+$ yarn deploy
 ```
 
 ## Local development
 
 In order to develop locally and see your changes reflected instantly, you will need to create an SSH tunnel or expose somehow your local development server. There are several services that allow you to do this, for example [ngrok](https://ngrok.com/) or [serveo.net](https://serveo.net/).
+
+```bash
+$ yarn deploy:local
+```
 
 ### Using servo.net
 

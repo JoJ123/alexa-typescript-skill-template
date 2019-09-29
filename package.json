@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "ENV=local nodemon",
-    "build": "gulp"
+    "scripts": {
+      "start": "cross-env ENV=local nodemon",
+      "build": "gulp",
+      "deploy": "cross-env ENV=prod && npm run build && ask deploy",
+      "deploy:dev": "cross-env ENV=dev && npm run build && ask deploy",
+      "deploy:lambda": "cross-env ENV=prod && npm run build && ask deploy --target lambda",
+      "deploy:local": "cross-env ENV=local && ask deploy --target skill --profile local"
+    },
   },
   "author": "",
   "license": "ISC",
@@ -18,12 +24,13 @@
     "@types/express": "4.17.0",
     "@types/i18next": "12.1.0",
     "@types/i18next-sprintf-postprocessor": "0.0.29",
+    "cross-env": "^6.0.0",
+    "del": "5.1.0",
     "express": "4.17.1",
     "gulp": "4.0.2",
-    "del": "5.1.0",
-    "ts-node": "5.0.1",
-    "typescript": "3.6.3",
     "nodemon": "1.19.2",
-    "tslint": "5.20.0"
+    "ts-node": "5.0.1",
+    "tslint": "5.20.0",
+    "typescript": "3.6.3"
   }
 }

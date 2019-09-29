@@ -23,4 +23,16 @@ export const strings: Resource = {
       HELLO_MSG: "Hello world!",
     } as IStrings,
   },
+  [LocaleTypes.deDE]: {
+    translation: {
+      WELCOME_MSG: "Willkommen zum Alexa Skill Kit, du kannst hallo sagen!",
+      GOODBYE_MSG: "Tschüss!",
+      HELP_MSG: "Du kannst Hallo zu mir sagen!",
+      ERROR_MSG: "Sorry, Ich kann den Befehl nicht verstehen. Bitte sag es noch einmal.",
+      ERROR_UNEXPECTED_MSG: "Sorry, ein unerwarteter Fehler ist aufgetreten. Bitte versuche es später erneut.",
+      FALLBACK_MSG: "Dieser Skill kann dir damit nicht helfen.",
+      FALLBACK_REPROMPT: "Wie kann ich dir helfen?",
+      HELLO_MSG: "Hallo Welt!",
+    } as IStrings,
+  },
 };

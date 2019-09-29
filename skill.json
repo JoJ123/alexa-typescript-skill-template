@@ -11,6 +11,16 @@
           ],
           "name": "ask-hello",
           "description": "Sample Full Description"
+        },
+        "de-DE": {
+          "summary": "Kurze Beispielbeschreibung",
+          "examplePhrases": [
+            "Alexa öffne hallo welt",
+            "Alexa sag hallo welt hallo",
+            "Alexa frag  hallo welt hallo zu sagen"
+          ],
+          "name": "ask-hello",
+          "description": "Ganze Beispielbeschreibung"
         }
       },
       "isAvailableWorldwide": true,
