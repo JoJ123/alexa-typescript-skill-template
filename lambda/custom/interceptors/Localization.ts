@@ -5,10 +5,10 @@ import * as i18next from "i18next";
 const i18n: i18next.default.i18n = i18next as any;
 import * as sprintf from "i18next-sprintf-postprocessor";
 import { strings } from "../lib/strings";
-import { RequestAttributes } from "../typings";
+import { IRequestAttributes } from "../typings";
 
 /**
- * Adds translation functions to the RequestAttributes.
+ * Adds translation functions to the IRequestAttributes.
  */
 export const Localization: RequestInterceptor = {
   process(handlerInput) {
@@ -29,7 +29,7 @@ export const Localization: RequestInterceptor = {
       return value;
     }
 
-    const attributes = handlerInput.attributesManager.getRequestAttributes() as RequestAttributes;
+    const attributes = handlerInput.attributesManager.getRequestAttributes() as IRequestAttributes;
     attributes.t = t;
   },
 };

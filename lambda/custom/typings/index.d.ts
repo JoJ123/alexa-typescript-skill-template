@@ -1,13 +1,13 @@
 import { Slot, SlotConfirmationStatus, slu } from "ask-sdk-model";
 
-export interface RequestAttributes {
+export interface IRequestAttributes {
 
   [key: string]: any;
 
   /**
    * The slot values for the current request.
    */
-  slots: SlotValues;
+  slots: ISlotValues;
   /**
    * Searches for the translation of the given key, replaces the arguments
    * and returns the result.
@@ -18,16 +18,16 @@ export interface RequestAttributes {
   t(key: string, ...args: any[]): any;
 }
 
-export interface SessionAttributes {
+export interface ISessionAttributes {
   [key: string]: any;
 }
 
-export interface Slots { [key: string]: Slot }
+export interface ISlots { [key: string]: Slot; }
 
 /**
  * A matched slot value (if `status.code` = "ER_SUCCESS_MATCH").
  */
-export interface MatchedSlotValue {
+export interface IMatchedSlotValue {
   /**
    * Name of the slot.
    */
@@ -72,7 +72,7 @@ export interface MatchedSlotValue {
 /**
  * An unmatched slot value (if `status.code` != "ER_SUCCESS_MATCH").
  */
-export interface UnmatchedSlotValue {
+export interface IUnmatchedSlotValue {
   /**
    * Name of the slot.
    */
@@ -94,15 +94,15 @@ export interface UnmatchedSlotValue {
   confirmationStatus: SlotConfirmationStatus;
 }
 
-export interface SlotValues {
-  [key: string]: MatchedSlotValue | UnmatchedSlotValue | undefined;
+export interface ISlotValues {
+  [key: string]: IMatchedSlotValue | IUnmatchedSlotValue | undefined;
 }
 
-export interface Resource {
-  [language: string]: ResourceLanguage;
+export interface IResource {
+  [language: string]: IResourceLanguage;
 }
 
-interface ResourceLanguage {
+interface IResourceLanguage {
   [namespace: string]: ResourceKey;
 }
 

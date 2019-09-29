@@ -11,6 +11,7 @@ export const Unexpected: ErrorHandler = {
     return error.name === ErrorTypes.Unexpected;
   },
   handle(handlerInput, error) {
+    // tslint:disable-next-line
     console.error(error);
 
     const { t } = GetRequestAttributes(handlerInput);

@@ -6,9 +6,9 @@ import { AddressInfo } from "net";
 
 import { handler } from "../custom";
 
-function CreateHandler(handler: LambdaHandler): express.RequestHandler {
+function CreateHandler(handlerInput: LambdaHandler): express.RequestHandler {
   return (req, res) => {
-    handler(req.body as RequestEnvelope, null, (err, result) => {
+    handlerInput(req.body as RequestEnvelope, null, (err, result) => {
       if (err) {
         return res.status(500).send(err);
       }
@@ -19,8 +19,9 @@ function CreateHandler(handler: LambdaHandler): express.RequestHandler {
 
 // create server
 const server = express();
-const listener = server.listen(process.env.port || process.env.PORT || 3980, function() {
+const listener = server.listen(process.env.port || process.env.PORT || 3980, () => {
   const { address, port } = listener.address() as AddressInfo;
+  // tslint:disable-next-line
   console.log("%s listening to %s%s", server.name, address, port);
 });
 

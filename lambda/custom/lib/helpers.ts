@@ -1,6 +1,6 @@
 import { HandlerInput } from "ask-sdk-core";
 import { IntentRequest, services } from "ask-sdk-model";
-import { RequestAttributes, SessionAttributes, Slots, SlotValues } from "../typings";
+import { IRequestAttributes, ISessionAttributes, ISlots, ISlotValues } from "../typings";
 import { ErrorTypes, RequestTypes } from "./constants";
 
 /**
@@ -11,8 +11,8 @@ import { ErrorTypes, RequestTypes } from "./constants";
  */
 export function IsIntent(handlerInput: HandlerInput, ...intents: string[]): boolean {
   if (handlerInput.requestEnvelope.request.type === RequestTypes.Intent) {
-    for (let i = 0; i < intents.length; i++) {
-      if (handlerInput.requestEnvelope.request.intent.name === intents[i]) {
+    for (const intent of intents) {
+      if (handlerInput.requestEnvelope.request.intent.name === intent) {
         return true;
       }
     }
@@ -27,8 +27,8 @@ export function IsIntent(handlerInput: HandlerInput, ...intents: string[]): bool
  * @param types
  */
 export function IsType(handlerInput: HandlerInput, ...types: string[]): boolean {
-  for (let i = 0; i < types.length; i++) {
-    if (handlerInput.requestEnvelope.request.type === types[i]) {
+  for (const type of types) {
+    if (handlerInput.requestEnvelope.request.type === type) {
       return true;
     }
   }
@@ -71,21 +71,21 @@ export function IsIntentWithCompleteDialog(handlerInput: HandlerInput, intent: s
 }
 
 /**
- * Gets the request attributes and casts it to our custom RequestAttributes type.
+ * Gets the request attributes and casts it to our custom IRequestAttributes type.
  *
  * @param handlerInput
  */
-export function GetRequestAttributes(handlerInput: HandlerInput): RequestAttributes {
-  return handlerInput.attributesManager.getRequestAttributes() as RequestAttributes;
+export function GetRequestAttributes(handlerInput: HandlerInput): IRequestAttributes {
+  return handlerInput.attributesManager.getRequestAttributes() as IRequestAttributes;
 }
 
 /**
- * Gets the session attributes and casts it to our custom SessionAttributes type.
+ * Gets the session attributes and casts it to our custom ISessionAttributes type.
  *
  * @param handlerInput
  */
-export function GetSessionAttributes(handlerInput: HandlerInput): SessionAttributes {
-  return handlerInput.attributesManager.getSessionAttributes() as SessionAttributes;
+export function GetSessionAttributes(handlerInput: HandlerInput): ISessionAttributes {
+  return handlerInput.attributesManager.getSessionAttributes() as ISessionAttributes;
 }
 
 /**
@@ -121,7 +121,7 @@ export function ResetSlotValue(request: IntentRequest, slotName: string) {
  *
  * @param request
  */
-export function ResetUnmatchedSlotValues(handlerInput: HandlerInput, slots: SlotValues) {
+export function ResetUnmatchedSlotValues(handlerInput: HandlerInput, slots: ISlotValues) {
   if (handlerInput.requestEnvelope.request.type === RequestTypes.Intent) {
     const request = handlerInput.requestEnvelope.request;
 
@@ -182,8 +182,8 @@ export function ResetUnmatchedSlotValues(handlerInput: HandlerInput, slots: Slot
  *
  * @param filledSlots
  */
-export function GetSlotValues(filledSlots?: Slots): SlotValues {
-  const slotValues: SlotValues = {};
+export function GetSlotValues(filledSlots?: ISlots): ISlotValues {
+  const slotValues: ISlotValues = {};
 
   if (filledSlots) {
     Object.keys(filledSlots).forEach((item) => {
@@ -203,14 +203,14 @@ export function GetSlotValues(filledSlots?: Slots): SlotValues {
 
             if (valueWrappers.length > 1) {
               slotValues[name] = {
-                name,
-                value: value as string,
-                isMatch: true,
-                resolved: valueWrappers[0].value.name,
+                confirmationStatus,
                 id: valueWrappers[0].value.id,
                 isAmbiguous: true,
+                isMatch: true,
+                name,
+                resolved: valueWrappers[0].value.name,
+                value: value as string,
                 values: valueWrappers.map((valueWrapper) => valueWrapper.value),
-                confirmationStatus,
               };
               break;
             }
@@ -282,7 +282,8 @@ export function CreateError(
  * @param handlerInput
  * @param speech
  */
-export function VoicePlayerSpeakDirective(handlerInput: HandlerInput, speech?: string): services.directive.SendDirectiveRequest {
+export function VoicePlayerSpeakDirective(handlerInput: HandlerInput, speech?: string):
+  services.directive.SendDirectiveRequest {
   const requestId = handlerInput.requestEnvelope.request.requestId;
 
   return {

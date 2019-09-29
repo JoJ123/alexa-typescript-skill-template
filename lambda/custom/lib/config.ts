@@ -1,6 +1,5 @@
-export interface Config {
-
-}
+// tslint:disable-next-line
+export interface IConfig {}
 
 export enum EnvironmentTypes {
   Local = "local",
@@ -8,7 +7,7 @@ export enum EnvironmentTypes {
   Production = "prod",
 }
 
-export function GetConfig(): Config {
+export function GetConfig(): IConfig {
   const env = process.env.ENV as EnvironmentTypes;
   if (env) {
     switch (env) {

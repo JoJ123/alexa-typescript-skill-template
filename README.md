@@ -33,8 +33,8 @@ This is a simple starter project for Alexa skills using Typescript.
 
 | Name | Description |
 | --- | --- |
-| `Localization` | Adds `i18next` localization functions to the `RequestAttributes`. |
-| `Slots` | Parses the slot values, adds additional useful information to them (e.g. if it was an exact match, or if it's ambiguous etc.), and adds them to the `RequestAttributes`. Check the `GetSlotValues` function inside `lambda/custom/lib/helpers.ts` for more details. |
+| `Localization` | Adds `i18next` localization functions to the `IRequestAttributes`. |
+| `ISlots` | Parses the slot values, adds additional useful information to them (e.g. if it was an exact match, or if it's ambiguous etc.), and adds them to the `IRequestAttributes`. Check the `GetSlotValues` function inside `lambda/custom/lib/helpers.ts` for more details. |
 
 - Localization strings
 
