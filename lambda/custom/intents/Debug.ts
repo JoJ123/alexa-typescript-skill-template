@@ -9,5 +9,5 @@ export const Debug: RequestHandler = {
   handle(handlerInput) {
     return handlerInput.responseBuilder
       .getResponse();
-  }
+  },
 };

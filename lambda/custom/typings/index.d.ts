@@ -1,6 +1,13 @@
-import { Slot, slu, SlotConfirmationStatus } from "ask-sdk-model";
+import { Slot, SlotConfirmationStatus, slu } from "ask-sdk-model";
 
 export interface RequestAttributes {
+
+  [key: string]: any;
+
+  /**
+   * The slot values for the current request.
+   */
+  slots: SlotValues;
   /**
    * Searches for the translation of the given key, replaces the arguments
    * and returns the result.
@@ -9,20 +16,13 @@ export interface RequestAttributes {
    * @param args
    */
   t(key: string, ...args: any[]): any;
-
-  /**
-   * The slot values for the current request.
-   */
-  slots: SlotValues;
-
-  [key: string]: any;
 }
 
 export interface SessionAttributes {
   [key: string]: any;
 }
 
-export type Slots = { [key: string]: Slot };
+export interface Slots { [key: string]: Slot }
 
 /**
  * A matched slot value (if `status.code` = "ER_SUCCESS_MATCH").

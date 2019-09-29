@@ -1,6 +1,6 @@
 import { RequestHandler } from "ask-sdk-core";
-import { IsIntent, GetRequestAttributes } from "../lib/helpers";
 import { IntentTypes, Strings } from "../lib/constants";
+import { GetRequestAttributes, IsIntent } from "../lib/helpers";
 
 export const Help: RequestHandler = {
   canHandle(handlerInput) {
@@ -15,5 +15,5 @@ export const Help: RequestHandler = {
       .speak(speechText)
       .reprompt(speechText)
       .getResponse();
-  }
+  },
 };

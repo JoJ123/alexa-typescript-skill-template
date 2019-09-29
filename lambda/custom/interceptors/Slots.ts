@@ -1,7 +1,7 @@
 import { RequestInterceptor } from "ask-sdk-core";
-import { RequestAttributes } from "../typings";
 import { RequestTypes } from "../lib/constants";
 import { GetSlotValues } from "../lib/helpers";
+import { RequestAttributes } from "../typings";
 
 /**
  * Parses and adds the slot values to the RequestAttributes.

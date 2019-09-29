@@ -1,6 +1,6 @@
 import { RequestHandler } from "ask-sdk-core";
 import { RequestTypes, Strings } from "../lib/constants";
-import { IsType, GetRequestAttributes } from "../lib/helpers";
+import { GetRequestAttributes, IsType } from "../lib/helpers";
 
 export const Launch: RequestHandler = {
   canHandle(handlerInput) {
@@ -15,5 +15,5 @@ export const Launch: RequestHandler = {
       .speak(speechText)
       .reprompt(speechText)
       .getResponse();
-  }
+  },
 };

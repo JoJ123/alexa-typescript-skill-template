@@ -27,7 +27,7 @@ export const Localization: RequestInterceptor = {
       }
 
       return value;
-    };
+    }
 
     const attributes = handlerInput.attributesManager.getRequestAttributes() as RequestAttributes;
     attributes.t = t;

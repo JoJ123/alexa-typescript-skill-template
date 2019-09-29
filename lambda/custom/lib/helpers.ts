@@ -1,7 +1,7 @@
 import { HandlerInput } from "ask-sdk-core";
 import { IntentRequest, services } from "ask-sdk-model";
-import { RequestAttributes, Slots, SlotValues, SessionAttributes } from "../typings";
-import { RequestTypes, ErrorTypes } from "./constants";
+import { RequestAttributes, SessionAttributes, Slots, SlotValues } from "../typings";
+import { ErrorTypes, RequestTypes } from "./constants";
 
 /**
  * Checks if the request matches any of the given intents.
@@ -203,35 +203,35 @@ export function GetSlotValues(filledSlots?: Slots): SlotValues {
 
             if (valueWrappers.length > 1) {
               slotValues[name] = {
-                name: name,
+                name,
                 value: value as string,
                 isMatch: true,
                 resolved: valueWrappers[0].value.name,
                 id: valueWrappers[0].value.id,
                 isAmbiguous: true,
                 values: valueWrappers.map((valueWrapper) => valueWrapper.value),
-                confirmationStatus: confirmationStatus,
+                confirmationStatus,
               };
               break;
             }
 
             slotValues[name] = {
-              name: name,
+              name,
               value: value as string,
               isMatch: true,
               resolved: valueWrappers[0].value.name,
               id: valueWrappers[0].value.id,
               isAmbiguous: false,
               values: [],
-              confirmationStatus: confirmationStatus,
+              confirmationStatus,
             };
             break;
           case "ER_SUCCESS_NO_MATCH":
             slotValues[name] = {
-              name: name,
-              value: value,
+              name,
+              value,
               isMatch: false,
-              confirmationStatus: confirmationStatus,
+              confirmationStatus,
             };
             break;
           default:
@@ -239,10 +239,10 @@ export function GetSlotValues(filledSlots?: Slots): SlotValues {
         }
       } else {
         slotValues[name] = {
-          name: name,
-          value: value,
+          name,
+          value,
           isMatch: false,
-          confirmationStatus: confirmationStatus,
+          confirmationStatus,
         };
       }
     });
@@ -268,7 +268,7 @@ export function Interject(str: string): string {
  */
 export function CreateError(
   msg: string = "Something unexpected happened.",
-  type: string = ErrorTypes.Unknown
+  type: string = ErrorTypes.Unknown,
 ): Error {
   const error = new Error(msg);
   error.name = type;
@@ -288,7 +288,7 @@ export function VoicePlayerSpeakDirective(handlerInput: HandlerInput, speech?: s
   return {
     directive: {
       type: "VoicePlayer.Speak",
-      speech: speech,
+      speech,
     },
     header: {
       requestId,

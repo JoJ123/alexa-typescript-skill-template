@@ -12,5 +12,5 @@ export const SystemExceptionEncountered: RequestHandler = {
 
     return handlerInput.responseBuilder
       .getResponse();
-  }
+  },
 };

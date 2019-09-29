@@ -1,6 +1,6 @@
 import { ErrorHandler } from "ask-sdk-core";
-import { GetRequestAttributes } from "../lib/helpers";
 import { Strings } from "../lib/constants";
+import { GetRequestAttributes } from "../lib/helpers";
 
 /**
  * Handles unknown errors. Should be placed at the end, as it will catch
