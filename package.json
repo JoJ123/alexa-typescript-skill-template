@@ -3,16 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "scripts": {
-      "start": "cross-env ENV=local nodemon",
-      "build": "gulp",
-      "deploy": "cross-env ENV=prod && npm run build && ask deploy",
-      "deploy:dev": "cross-env ENV=dev && npm run build && ask deploy",
-      "deploy:lambda": "cross-env ENV=prod && npm run build && ask deploy --target lambda",
-      "deploy:local": "cross-env ENV=local && ask deploy --target skill --profile local"
-    },
+    "start": "cross-env ENV=local nodemon",
+    "build": "gulp",
+    "deploy": "cross-env ENV=prod && npm run build && ask deploy",
+    "deploy:dev": "cross-env ENV=dev && npm run build && ask deploy",
+    "deploy:lambda": "cross-env ENV=prod && npm run build && ask deploy --target lambda",
+    "deploy:local": "cross-env ENV=local && ask deploy --target skill --profile local"
   },
-  "author": "",
+  "author": "JoJ123",
   "license": "ISC",
   "dependencies": {
     "ask-sdk-core": "2.7.0",
